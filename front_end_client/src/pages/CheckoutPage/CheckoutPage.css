@@ -1,0 +1,209 @@
+.title_checkout {
+    font-size: 20px;
+    font-weight: 500;
+    color: #212529;
+    margin-bottom: 20px;
+    display: flex;
+    width: 46%;
+    margin: 0px auto;
+    justify-content: space-around ;
+}
+.css-1x51dt5-MuiInputBase-input-MuiInput-input{
+    font-size: 15px!important;
+}
+
+.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root{
+    color: #999!important;
+    font-size: 11px;
+    line-height: 18px;
+    opacity: 1;
+    top: 0;
+}
+
+.brise-input {
+    border-radius: 0;
+    height: 50px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.brise-input input {
+	background-color: #fff;
+    border: 0;
+    border-bottom: 1px solid rgba(145,158,171,.2);
+    border-radius: 0;
+    box-sizing: border-box;
+    font-size: 15px;
+    height: 100%;
+    line-height: 24px;
+    padding: 18px 20px 2px 0;
+    width: 100%;
+}
+.brise-input input:focus ~ label, input:valid ~ label  {
+    color: #999;
+    font-size: 11px;
+    line-height: 18px;
+    opacity: 1;
+    top: 0;
+    left: 0;
+}
+.brise-input .line {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 3px;
+	background: rgb(18, 141, 226);
+	left: -999px;
+	transition: .25s;
+	opacity: 0;
+	z-index: 6;
+}
+.brise-input input:focus ~ .line {
+	left: 0;
+	opacity: 1;
+}
+.brise-input label {
+	position: absolute;
+	left: 10px;
+	top: 45%;
+	transition: ease-out .15s;
+	color: #999;
+    font-size: 12px;
+}
+
+/* End Inputs */
+
+
+
+  .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root{
+    color: #999!important;
+    font-size: 12px!important;
+    left: 0;
+    line-height: 15px!important;
+    margin: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 18px;
+    transition: top .25s ease;
+    width: 100%;
+    font-family:
+      'Roboto','Helvetica','Arial',sans-serif!important;
+  }
+
+  .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root{
+    color: #999;
+    font-size: 15px!important;
+    line-height: 18px!important;
+    font-family:
+      'Roboto','Helvetica','Arial',sans-serif!important;
+  }
+
+  .css-1k1z705-MuiInputBase-root-MuiInput-root-MuiSelect-root:before {
+    border-bottom: 1px solid rgba(145,158,171,.2)!important;
+  }
+
+  .css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input{
+    font-size: 15px!important;
+  }
+
+  .css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input{
+    line-height: 19px!important;
+  }
+  .css-1om905o-MuiFormControl-root{
+    margin: 0px!important;
+  }
+
+  .ant-modal-content{
+    top: 0px;
+    overflow: hidden;
+  }
+
+  .custom-spin{
+    position: fixed;
+    display: flex;
+    background: #e5e5ec6b;
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+  }
+
+  
+.cardCoupoun {
+  width: 400px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 10px 10px;
+  position: relative;
+}
+
+.main,
+.copy-button {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
+}
+
+
+.co-img img {
+  width: 100px;
+  height: 100px;
+}
+.vertical {
+  border-left: 5px dotted black;
+  height: 100px;
+  position: absolute;
+  left: 40%;
+}
+
+
+.content h1 {
+  font-size: 35px;
+  margin-left: -20px;
+  color: #565656;
+}
+
+.content h1 span {
+  font-size: 18px;
+}
+.content h5 {
+  color: #565656;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.content p {
+  font-size: 14px;
+  color: #696969;
+}
+
+.copy-button {
+  margin: 12px 0 -5px 0;
+  height: 45px;
+  border-radius: 4px;
+  padding: 0 5px;
+  border: 1px solid rgb(18, 141, 226);
+}
+
+.copy-button input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+.copy-button button {
+  padding: 5px 20px;
+  background-color: rgb(18, 141, 226);
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+.content{
+  width: 56%;
+}

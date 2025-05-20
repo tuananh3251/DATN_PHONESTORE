@@ -1,0 +1,89 @@
+.button-order-bought{
+    width: 222px;
+    font-size: 15px!important;
+}
+
+.card {
+    position: relative;
+    width: 110%;
+    padding: 20px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    border: 0;
+    .circle {
+      border-radius: 3px;
+      width: 150px;
+      height: 150px;
+      background: black;
+      position: absolute;
+      right: 0px;
+      top: 0;
+      background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+      border-bottom-left-radius: 170px;
+    }
+    .content {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+      font-size: 34px;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+    h2 {
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      font-weight: 300;
+    }
+    .social {
+      margin-bottom: 5px;
+        a {
+     text-decoration: none !important;
+     color: black;
+      margin-left: 8px;
+      font-weight: 300;
+      i {
+        font-weight: 400;
+      }
+    }
+    }
+    .location {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      i {
+        color: red;
+      }
+      p {
+        font-weight: 300;
+      }
+    }
+    }
+  .title{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+  }
+
+  .css-1x51dt5-MuiInputBase-input-MuiInput-input{
+    font-size: 20px!important;
+  }
+  
+
+  .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root{
+    font-size: 16px!important;
+    color: rgb(18, 141, 226)!important;
+  }
+
+  .custom-spin{
+    position: fixed;
+    display: flex;
+    background: #e5e5ec6b;
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+  }
