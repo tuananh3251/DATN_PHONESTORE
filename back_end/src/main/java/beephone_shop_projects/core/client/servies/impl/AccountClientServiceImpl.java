@@ -11,7 +11,9 @@ import beephone_shop_projects.core.client.repositories.CartClientRepository;
 import beephone_shop_projects.core.client.repositories.CartDetailClientRepository;
 import beephone_shop_projects.entity.Account;
 import beephone_shop_projects.entity.GioHang;
+import beephone_shop_projects.entity.Role;
 import beephone_shop_projects.infrastructure.config.mail.EmailService;
+import beephone_shop_projects.infrastructure.constant.StatusAccountCus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -98,34 +100,50 @@ public class AccountClientServiceImpl{
         return accountClientRepository.findByEmail(email);
     }
 
-    public AccountDto register(AccountRegisterRequest request){
+    public AccountDto register(AccountRegisterRequest request) {
+        // Kiểm tra trùng email và số điện thoại
         Account account = accountClientRepository.findByEmail(request.getEmail());
-        Account account2 = accountClientRepository.findByPhoneNumber(request.getEmail());
+        Account account2 = accountClientRepository.findByPhoneNumber(request.getPhone());
 
-        if(account != null){
-            throw new RuntimeException("Email đã tồn tại trong hệ thống");
+        if (account != null) {
+            throw new RuntimeException("Email đã tồn tại trong hệ thống");
         }
-        if(account2 != null){
-            throw new RuntimeException("Số điện thoại đã tồn tại trong hệ thống");
+        if (account2 != null) {
+            throw new RuntimeException("Số điện thoại đã tồn tại trong hệ thống");
         }
 
+        // Tạo mã khách hàng ngẫu nhiên
         Random random = new Random();
         int number = random.nextInt(10000);
         String code = String.format("KH%04d", number);
-        Account kh = new Account().builder()
+
+        // Lấy role mặc định
+        Role role = roleRepository.findByMa("role2");
+        if (role == null) {
+            throw new RuntimeException("Không tìm thấy vai trò mặc định.");
+        }
+
+        // Tạo tài khoản mới
+        Account kh = Account.builder()
                 .email(request.getEmail())
-                .idRole(roleRepository.findByMa("role2"))
+                .idRole(role)
                 .hoVaTen(request.getName())
                 .ma(code)
                 .matKhau(passwordEncoder.encode(request.getPassword()))
                 .soDienThoai(request.getPhone())
+                .trangThai(StatusAccountCus.HOAT_DONG) // ánh xạ giá trị 0 trong DB
                 .build();
-        kh  = accountRepository.save(kh);
 
-        AccountDto dto = new AccountDto().builder()
+        // Lưu vào database
+        kh = accountRepository.save(kh);
+        if (kh == null) {
+            throw new RuntimeException("Đăng ký tài khoản thất bại.");
+        }
+
+        // Tạo DTO trả về
+        AccountDto dto = AccountDto.builder()
                 .anhDaiDien(kh.getAnhDaiDien())
                 .email(kh.getEmail())
-                .anhDaiDien(kh.getAnhDaiDien())
                 .hoVaTen(kh.getHoVaTen())
                 .ma(kh.getMa())
                 .soDienThoai(kh.getSoDienThoai())
@@ -133,13 +151,19 @@ public class AccountClientServiceImpl{
                 .id(kh.getId())
                 .build();
 
+        // Gửi email chứa mật khẩu ban đầu
         Context context = new Context();
-        //send new pass
         context.setVariable("password", request.getPassword());
+        emailService.sendEmailWithHtmlTemplate(
+                request.getEmail(),
+                "Chúc mừng bạn đã đăng ký thành công.",
+                "email-get-pass-template",
+                context
+        );
 
-        emailService.sendEmailWithHtmlTemplate(request.getEmail(), "Chúc mừng bạn đãdaăng kí thành công.", "email-get-pass-template", context);
         return dto;
     }
+
 
     public Account changeInformationUser(AccountChangeInformationRequest req){
         Account account = accountRepository.findById(req.getId()).orElseThrow(() -> new IllegalArgumentException("Không tìm thấy tài khoản"));
